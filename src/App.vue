@@ -5,17 +5,15 @@
 </template>
 
 <script>
-import TODO from './components/TODO'
+import TODO from "./components/TODO";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     TODO
   },
   methods: {
-    toggleScratch() {
-
-    }
+    toggleScratch() {}
   }
-}
+};
 </script>

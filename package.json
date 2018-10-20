@@ -10,9 +10,12 @@
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
+    "tailwind:css": "./node_modules/.bin/tailwind build ./src/assets/css/main.css -c ./tailwind.js -o ./public/css/styles.css",
     "build": "node build/build.js"
   },
   "dependencies": {
+    "jest": "23.6.0",
+    "tailwindcss": "0.6.6",
     "vue": "^2.5.2"
   },
   "devDependencies": {
