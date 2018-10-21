@@ -5,7 +5,7 @@
     <div class="todo__form">
       <input v-model="item"
       class="todo__input"
-      type="text" 
+      type="text"
       placeholder="I need to..">
 
       <button class="todo__add"
@@ -14,7 +14,7 @@
       </button>
     </div>
 
-    <button class="todo__clear" 
+    <button class="todo__clear"
      @click="clearList">
       Clear list
      </button>
@@ -24,12 +24,12 @@
         :class="{ 'todo__list-wip--full': !completed.length }"
         v-if="list.length">
         <h2 class="todo__list-title">In progress</h2>
-        
+
         <ul class="todo__list">
           <li v-for="task in list"
           class="todo__list-item">
             <p class="todo__list-item-copy">{{ task }}</p>
-            <button class="todo__remove" 
+            <button class="todo__remove"
             @click="toggleScratch($event.target.parentNode)">
               Scratch
             </button>
@@ -64,10 +64,7 @@ export default {
   },
   methods: {
     addToList() {
-      if (
-        this.item &&
-        (!this.list.includes(this.item) || !this.completed.includes(this.item))
-      ) {
+      if (this.item && (!this.list.includes(this.item) && !this.completed.includes(this.item))) {
         this.list.push(this.item);
       }
     },
