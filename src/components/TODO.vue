@@ -30,7 +30,7 @@
           class="todo__list-item">
             <p class="todo__list-item-copy">{{ task }}</p>
             <button class="todo__remove"
-            @click="toggleScratch($event.target.parentNode)">
+            @click="scratchItem($event.target.parentNode)">
               Scratch
             </button>
           </li>
@@ -38,6 +38,7 @@
       </div>
 
       <div class="todo__list-completed"
+        :class="{ 'todo__list-completed--full': !list.length }"
         v-if="completed.length">
         <h2 class="todo__list-title">Completed</h2>
 
@@ -71,9 +72,9 @@ export default {
     clearList() {
       this.list = [];
       this.completed = [];
-      this.itemRemoved = false;
     },
-    toggleScratch(ev) {
+    scratchItem(ev) {
+      console.log(ev);
       this.list.splice(this.list.indexOf(ev.children[0].innerText), 1);
       this.completed.push(ev.children[0].innerText);
     }
@@ -110,10 +111,6 @@ export default {
     justify-content: space-between;
   }
 
-  &__list-completed {
-    border: 1px solid red;
-  }
-
   &__list-wip,
   &__list-completed {
     border-radius: 4px;
@@ -124,7 +121,14 @@ export default {
 
   &__list-wip {
     border: 1px solid blue;
+  }
 
+  &__list-completed {
+    border: 1px solid red;
+  }
+
+  &__list-wip,
+  &__list-completed {
     &--full {
       border: none;
       flex: none;

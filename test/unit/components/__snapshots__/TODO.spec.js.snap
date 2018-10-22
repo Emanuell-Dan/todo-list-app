@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TODO/> should render a TODO component with expected html structure 1`] = `
+<div
+  class="todo"
+>
+  <h2
+    class="todo__heading"
+  >
+    Plan your day
+  </h2>
+   
+  <div
+    class="todo__form"
+  >
+    <input
+      class="todo__input"
+      placeholder="I need to.."
+      type="text"
+    />
+     
+    <button
+      class="todo__add"
+    >
+      
+      Add
+    
+    </button>
+  </div>
+   
+  <button
+    class="todo__clear"
+  >
+    
+    Clear list
+   
+  </button>
+   
+  <section
+    class="todo__list-wrapper"
+  >
+    <!---->
+     
+    <!---->
+  </section>
+</div>
+`;
