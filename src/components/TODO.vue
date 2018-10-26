@@ -1,26 +1,26 @@
 <template>
-  <div class="todo">
+  <div class="todo bg-grey-lighter">
     <h2 class="todo__heading">Plan your day</h2>
 
     <div class="todo__form">
       <input v-model="item"
-      class="todo__input"
+      class="todo__input hadow appearance-none border rounded py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
       type="text"
       placeholder="I need to..">
 
-      <button class="todo__add"
+      <button class="todo__add bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded"
        @click="addToList">
         Add
       </button>
     </div>
 
-    <button class="todo__clear"
+    <button class="todo__clear bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow"
      @click="clearList">
       Clear list
      </button>
 
     <section class="todo__list-wrapper">
-      <div class="todo__list-wip"
+      <div class="todo__list-wip border border-blue"
         :class="{ 'todo__list-wip--full': !completed.length }"
         v-if="list.length">
         <h2 class="todo__list-title">In progress</h2>
@@ -29,7 +29,7 @@
           <li v-for="task in list"
           class="todo__list-item">
             <p class="todo__list-item-copy">{{ task }}</p>
-            <button class="todo__remove"
+            <button class="todo__remove bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow"
             @click="scratchItem($event.target.parentNode)">
               Scratch
             </button>
@@ -37,7 +37,7 @@
         </ul>
       </div>
 
-      <div class="todo__list-completed"
+      <div class="todo__list-completed border border-red"
         :class="{ 'todo__list-completed--full': !list.length }"
         v-if="completed.length">
         <h2 class="todo__list-title">Completed</h2>
@@ -55,10 +55,10 @@
 
 <script>
 export default {
-  name: "TODO",
+  name: 'TODO',
   data() {
     return {
-      item: "",
+      item: '',
       list: [],
       completed: []
     };
@@ -67,6 +67,7 @@ export default {
     addToList() {
       if (this.item && (!this.list.includes(this.item) && !this.completed.includes(this.item))) {
         this.list.push(this.item);
+        this.item = '';
       }
     },
     clearList() {
@@ -86,9 +87,8 @@ export default {
 .todo {
   $parent: &;
 
-  border: 1px solid #000;
   border-radius: 4px;
-  margin: 0 auto;
+  margin: 50px auto;
   max-width: 500px;
   padding: 20px;
   text-align: center;
@@ -98,12 +98,13 @@ export default {
   }
 
   &__form {
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 
   &__input {
     border-radius: 4px;
     margin-right: 10px;
+    padding: 5px 10px;
   }
 
   &__list-wrapper {
@@ -116,15 +117,7 @@ export default {
     border-radius: 4px;
     flex: 1;
     margin: 20px 5px 0;
-    padding: 0 10px;
-  }
-
-  &__list-wip {
-    border: 1px solid blue;
-  }
-
-  &__list-completed {
-    border: 1px solid red;
+    padding: 20px 10px;
   }
 
   &__list-wip,
@@ -133,6 +126,7 @@ export default {
       border: none;
       flex: none;
       margin: 20px auto 0;
+      padding: 0 10px;
 
       #{$parent}__list-title {
         margin-top: 0;
@@ -150,6 +144,7 @@ export default {
   }
 
   &__list-item {
+    align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
